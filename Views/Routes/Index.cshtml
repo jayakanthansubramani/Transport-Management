@@ -1,0 +1,58 @@
+﻿@model IEnumerable<TransportManagement.Models.Route>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<style>
+    <button type="button" class="btn btn-outline-success"> Success</button >
+    <button type="button" class="btn btn-outline-info" > Info</button >
+    <button type="button" class="btn btn-outline-danger" > Danger</button >
+    <button type="button" class="btn btn-light" > Light</button >
+</style>
+<h1 style="text-align: center;margin-top: 70px;padding-top: 20px; margin-bottom: 60px;">Route List</h1>
+
+<p style="margin-left: 1100px" class="btn btn-light">
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RouteNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stop1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stop2)
+            </th>
+            <th>
+            @Html.DisplayName("VehicleId")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RouteNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stop1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stop2)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.VehicleNoNavigation.VehicleId)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.RoutetId" class="btn btn-outline-success">Edit</a> 
+                    <a asp-action="Details" asp-route-id="@item.RoutetId" class="btn btn-outline-info">Details</a> 
+                    <a asp-action="Delete" asp-route-id="@item.RoutetId" class="btn btn-outline-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

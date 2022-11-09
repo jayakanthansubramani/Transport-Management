@@ -1,0 +1,59 @@
+﻿@model TransportManagement.Models.Vehicle
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div>
+    <h4 style="text-align: center;margin-top: 50px;">
+        Add New Vehicle
+    </h4>
+</div>
+
+<div class="row" style="margin-top: 70px; margin-left: 500px;">
+    <div class="col-md-4">
+        <form  asp-action="Create" >
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="VehicleNo" class="control-label" style="padding-left: 50px; margin-left: 45px;margin-bottom: 20px;"></label>
+                <input asp-for="VehicleNo" class="form-control" />
+                <span asp-validation-for="VehicleNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Capacity" class="control-label" style="padding-left: 60px; margin-left: 45px;margin-bottom: 20px;margin-top: 10px;"></label>
+                <input asp-for="Capacity" class="form-control" />
+                <span asp-validation-for="Capacity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AvailableSeats" class="control-label" style="padding-left: 50px; margin-left: 40px;margin-bottom: 20px;margin-top: 10px;"></label>
+                <input asp-for="AvailableSeats" class="form-control" />
+                <span asp-validation-for="AvailableSeats" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="margin-left: 60px; margin-top: 30px">
+                <label asp-for="Operable" class="control-label"></label>
+                <input  asp-for="Operable" type="checkbox" id="Yes"  value="Yes">
+                <label asp-for="Operable" for="Yes"> Yes</label>
+                <input asp-for="Operable" type="checkbox" id="No" value="No">
+                <label asp-for="Operable" for="No">No</label>
+                <span asp-validation-for="Operable" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" onSubmit="onComplete()"
+                       style="margin-top: 20px;
+                       margin-left: 90px;"
+                       value="Add" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    function onComplete() {
+        alert("Vehicle Successfully Added")
+    }
+</script>
+<div style="text-align: end;">
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

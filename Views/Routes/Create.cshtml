@@ -1,0 +1,48 @@
+﻿@model TransportManagement.Models.Route
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4 style="text-align: center;margin-top: 50px;">Add New Route</h4>
+<div class="row" style="margin-top: 70px; margin-left: 500px;">
+    <div class="col-md-4">
+        <form  asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="RouteNo" class="control-label" style="margin-left: 85px;margin-bottom: 10px;"></label>
+                <input asp-for="RouteNo" name="RouteNo" required class="form-control" />
+                <span asp-validation-for="RouteNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Stop1" class="control-label" style="margin-left: 100px;margin-bottom: 10px;margin-top: 10px"></label>
+                <input asp-for="Stop1" required class="form-control" />
+                <span asp-validation-for="Stop1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Stop2" class="control-label" style="margin-left: 110px;margin-bottom: 10px;margin-top: 10px"></label>
+                <input asp-for="Stop2" required class="form-control" />
+                <span asp-validation-for="Stop2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VehicleNo" class="control-label" style="margin-left: 90px;margin-bottom: 10px;margin-top: 10px"></label>
+                <select asp-for="VehicleNo" class ="form-control" asp-items="ViewBag.VehicleNo"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" onSubmit="onComplete()" style="margin-top: 20px;margin-left: 90px;" value="Add" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    function onComplete() {
+        alert("Route Successfully Added")
+    }
+</script>
+<div style="text-align: end;">
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

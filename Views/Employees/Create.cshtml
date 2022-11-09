@@ -1,0 +1,62 @@
+﻿@model TransportManagement.Models.Employee
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<style>
+    
+        
+    
+</style>
+
+<h4 style="text-align: center;margin-top: 50px;">
+    Add New Employee
+</h4>
+
+<div class="row" style="margin-top: 70px; margin-left: 500px;">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="EmployeeName" class="control-label" style="padding-left: 50px; margin-left: 20px;margin-bottom: 20px;"></label>
+                <input asp-for="EmployeeName" required class="form-control" />
+                <span asp-validation-for="EmployeeName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Age" class="control-label" style="padding-left: 60px; margin-left: 45px;margin-bottom: 20px;margin-top: 10px;"></label>
+                <input asp-for="Age" required class="form-control" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location" class="control-label" style="padding-left: 50px; margin-left: 45px;margin-bottom: 20px;margin-top: 10px;"></label>
+                <input asp-for="Location" required class="form-control" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label" style="padding-left: 50px; margin-left: 45px;margin-bottom: 20px;margin-top: 10px;"></label>
+                <input asp-for="Phone" required class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+           @* <div class="form-group">
+                <label asp-for="VehicleId" class="control-label"></label>
+                <select asp-for="VehicleId" class ="form-control" asp-items="ViewBag.VehicleId"></select>
+            </div>*@
+            <div class="form-group" style="padding-left: 30px;padding-right: 30px; margin-top: 30px;margin-left: 50px;">
+                <input type="submit" onSubmit="onComplete()" value="Add" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    function onComplete() {
+        alert("Employee Successfully Added ")
+    }
+</script>
+<div style="text-align: end;">
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

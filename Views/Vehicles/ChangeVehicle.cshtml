@@ -1,0 +1,56 @@
+﻿@model IEnumerable<TransportManagement.Models.Vehicle>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<style>
+    <button type="button" class="btn btn-outline-success" > Success</button >
+</style>
+<h1 style ="text-align: center;margin-top: 70px;padding-top: 20px; margin-bottom: 60px;">
+    Status
+</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.VehicleNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Capacity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AvailableSeats)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Operable)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VehicleNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Capacity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AvailableSeats)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Operable)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.VehicleId" class="btn btn-outline-success">Edit</a>
+                    @*<a asp-action="Details" asp-route-id="@item.VehicleId">Details</a> 
+                    <a asp-action="Delete" asp-route-id="@item.VehicleId">Delete</a>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

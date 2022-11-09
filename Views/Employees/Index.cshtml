@@ -1,0 +1,70 @@
+﻿@model IEnumerable<TransportManagement.Models.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 style="text-align: center;
+    margin-top: 70px;
+    padding-top: 20px; margin-bottom: 60px;">
+    Employee List
+</h1>
+<p style="margin-left: 1100px;">
+    <a asp-action="Create" class="btn btn-light">Create New Vehicle</a>
+</p>
+<style>
+    <button type="button" class="btn btn-outline-dark">Dark</button>
+</style>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VehicleId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vehicle.VehicleNo)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vehicle.VehicleId)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vehicle.VehicleNo)
+                </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.EmployeeId" class="btn btn-outline-dark">Edit</a> 
+                    <a asp-action="Details" asp-route-id="@item.EmployeeId" class="btn btn-outline-dark">Details</a> 
+                    <a asp-action="Delete" asp-route-id="@item.EmployeeId" class="btn btn-outline-dark">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
